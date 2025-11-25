@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "estus",
+	"version": "${version}",
+	"name": "Estus",
+	"description": "Adds the Estus Flask from Dark Souls",
+	"authors": [
+		"tsuniko"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "ARR",
+	"icon": "assets/estus/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.tsuniko.Estus"
+		],
+      "client": [
+        "net.tsuniko.EstusClient"
+      ],
+		"fabric-datagen": [
+			"net.tsuniko.EstusDataGenerator"
+		]
+	},
+	"mixins": [
+		"estus.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.18.1",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
