@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "estus:estus_shard"
+    },
+    "X": {
+      "item": "minecraft:glass_bottle"
+    }
+  },
+  "pattern": [
+    " # ",
+    "#X#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "estus:estus_flask"
+  }
+}

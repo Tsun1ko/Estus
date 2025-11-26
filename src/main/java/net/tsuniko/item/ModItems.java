@@ -22,7 +22,6 @@ public class ModItems {
 
     public static final Item ESTUS_SHARD = register(new Item(new Item.Settings()), "estus_shard");
     public static final Item ESTUS_FLASK = register(new EstusFlaskItem(new Item.Settings().maxCount(1)), "estus_flask");
-    public static final Item EMPTY_ESTUS_FLASK = register(new Item(new Item.Settings().maxCount(1)), "empty_estus_flask");
 
     public static Item register(Item item, String id) {
         Identifier itemID = Identifier.of(Estus.MOD_ID, id);
@@ -36,7 +35,6 @@ public class ModItems {
         ItemGroupEvents.modifyEntriesEvent(CUSTOM_ITEM_GROUP_KEY).register(itemGroup -> {
             itemGroup.add(ModItems.ESTUS_SHARD);
             itemGroup.add(ModItems.ESTUS_FLASK);
-            itemGroup.add(ModItems.EMPTY_ESTUS_FLASK);
         });
     }
 }

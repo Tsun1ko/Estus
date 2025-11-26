@@ -48,15 +48,6 @@ public class EstusFlaskItem extends Item {
             playerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
             if (charges.charges() > 0) user.setAttached(ModAttachmentTypes.ESTUS_CHARGES, new ModCustomAttachedData(charges.charges() - 1));
             else user.setAttached(ModAttachmentTypes.ESTUS_CHARGES, new ModCustomAttachedData(0));
-
-            if (user.getAttached(ModAttachmentTypes.ESTUS_CHARGES).charges() <= 0) {
-                PlayerInventory inventory = ((PlayerEntity) user).getInventory();
-                do {
-                    int slot = inventory.getSlotWithStack(new ItemStack(ModItems.ESTUS_FLASK));
-
-                    inventory.setStack(slot, new ItemStack(ModItems.EMPTY_ESTUS_FLASK));
-                } while (inventory.getSlotWithStack(new ItemStack(ModItems.ESTUS_FLASK)) != -1);
-            }
         }
 
         user.emitGameEvent(GameEvent.DRINK);
@@ -75,7 +66,10 @@ public class EstusFlaskItem extends Item {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        return ItemUsage.consumeHeldItem(world, user, hand);
+        if (user.getAttachedOrCreate(ModAttachmentTypes.ESTUS_CHARGES).charges() > 0) {
+            return ItemUsage.consumeHeldItem(world, user, hand);
+        }
+        return TypedActionResult.pass(user.getStackInHand(hand));
     }
 
     @Override

@@ -1,6 +1,26 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "estus:item/estus_flask"
-  }
+    "layer0": "estus:item/full_estus_flask"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "estus:charges": 0
+      },
+      "model": "estus:item/empty_estus_flask"
+    },
+    {
+      "predicate": {
+        "estus:charges": 0.5
+      },
+      "model": "estus:item/half_full_estus_flask"
+    },
+    {
+      "predicate": {
+        "estus:charges": 1
+      },
+      "model": "estus:item/full_estus_flask"
+    }
+  ]
 }

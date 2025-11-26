@@ -43,15 +43,8 @@ public class Estus implements ModInitializer {
 	}
 
     private void refill(PlayerEntity user) {
+        if (user == null) user = EstusClient.getPlayer();
         user.setAttached(ModAttachmentTypes.ESTUS_CHARGES, user.getAttachedOrCreate(ModAttachmentTypes.MAX_ESTUS_CHARGES));
-
-        PlayerInventory inventory = user.getInventory();
-
-        do {
-            int slot = inventory.getSlotWithStack(new ItemStack(ModItems.EMPTY_ESTUS_FLASK));
-
-            inventory.setStack(slot, new ItemStack(ModItems.ESTUS_FLASK));
-        } while (inventory.getSlotWithStack(new ItemStack(ModItems.EMPTY_ESTUS_FLASK)) != -1);
 
         user.sendMessage(Text.literal("Flasks Replenished!").formatted(Formatting.GOLD));
     }
