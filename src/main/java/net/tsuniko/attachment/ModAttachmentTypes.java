@@ -1,6 +1,5 @@
 package net.tsuniko.attachment;
 
-import com.mojang.serialization.Codec;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentRegistry;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentSyncPredicate;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentType;
@@ -29,5 +28,5 @@ public class ModAttachmentTypes {
                     )
     );
 
-    public static void init() {}
+    public static void inititalize() {}
 }

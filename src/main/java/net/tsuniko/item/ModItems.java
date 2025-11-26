@@ -20,7 +20,7 @@ public class ModItems {
             .displayName(Text.translatable("itemGroup.estus"))
             .build();
 
-    public static final Item ESTUS_SHARD = register(new Item(new Item.Settings()), "estus_shard");
+    public static final Item ESTUS_SHARD = register(new EstusShardItem(new Item.Settings()), "estus_shard");
     public static final Item ESTUS_FLASK = register(new EstusFlaskItem(new Item.Settings().maxCount(1)), "estus_flask");
 
     public static Item register(Item item, String id) {

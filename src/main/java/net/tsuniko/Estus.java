@@ -3,19 +3,11 @@ package net.tsuniko;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.entity.event.v1.EntitySleepEvents;
-import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
-import net.fabricmc.fabric.api.event.Event;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.network.message.SentMessage;
 import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Formatting;
-import net.minecraft.world.event.GameEvent;
 import net.tsuniko.attachment.ModAttachmentTypes;
+import net.tsuniko.block.ModBlocks;
 import net.tsuniko.item.ModItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +23,8 @@ public class Estus implements ModInitializer {
 	@Override
 	public void onInitialize() {
         ModItems.initialize();
-        ModAttachmentTypes.init();
+        ModBlocks.initialize();
+        ModAttachmentTypes.inititalize();
 
         ServerPlayerEvents.AFTER_RESPAWN.register((oldPlayer, newPlayer, alive) -> {
             refill(newPlayer);
@@ -46,6 +39,6 @@ public class Estus implements ModInitializer {
         if (user == null) user = EstusClient.getPlayer();
         user.setAttached(ModAttachmentTypes.ESTUS_CHARGES, user.getAttachedOrCreate(ModAttachmentTypes.MAX_ESTUS_CHARGES));
 
-        user.sendMessage(Text.literal("Flasks Replenished!").formatted(Formatting.GOLD));
+        user.sendMessage(Text.translatable("info.estus.flasks_replenished"));
     }
 }

@@ -75,7 +75,7 @@ public class EstusFlaskItem extends Item {
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
         PlayerEntity user = EstusClient.getPlayer();
-        tooltip.add(Text.of(user.getAttachedOrCreate(ModAttachmentTypes.ESTUS_CHARGES).charges() + "/" + user.getAttachedOrCreate(ModAttachmentTypes.MAX_ESTUS_CHARGES).charges()));
+        tooltip.add(Text.of("§7" + user.getAttachedOrCreate(ModAttachmentTypes.ESTUS_CHARGES).charges() + "/" + user.getAttachedOrCreate(ModAttachmentTypes.MAX_ESTUS_CHARGES).charges()));
         super.appendTooltip(stack, context, tooltip, type);
     }
 }
