@@ -6,6 +6,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -15,6 +16,8 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.world.World;
 import net.tsuniko.attachment.ModAttachmentTypes;
 import net.tsuniko.attachment.PotencyAttachedData;
+
+import java.util.List;
 
 public class UndeadBoneShardItem extends Item {
     public UndeadBoneShardItem(Settings settings) {
@@ -63,5 +66,11 @@ public class UndeadBoneShardItem extends Item {
         player.setAttached(ModAttachmentTypes.FLASK_POTENCY, new PotencyAttachedData(potency + 1));
 
         return true;
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
+        tooltip.add(Text.translatable("info.estus.undead_bone_shard"));
+        super.appendTooltip(stack, context, tooltip, type);
     }
 }

@@ -19,6 +19,7 @@ public class ModLootTableModifier {
     private static final RegistryKey<LootTable> JUNGLE_TEMPLE_ID = LootTables.JUNGLE_TEMPLE_CHEST;
     private static final RegistryKey<LootTable> SIMPLE_DUNGEON_ID = LootTables.SIMPLE_DUNGEON_CHEST;
     private static final RegistryKey<LootTable> MINESHAFT_ID = LootTables.ABANDONED_MINESHAFT_CHEST;
+    private static final RegistryKey<LootTable> RUINDED_PORTAL_ID = LootTables.RUINED_PORTAL_CHEST;
     private static final RegistryKey<LootTable> TRAIL_RUINS_COMMON_ID = LootTables.TRAIL_RUINS_COMMON_ARCHAEOLOGY;
     private static final Identifier SKELETON_ID = Identifier.ofVanilla("entities/skeleton");
 
@@ -29,7 +30,8 @@ public class ModLootTableModifier {
                     DESERT_PYRAMID_ID.equals(registryKey) ||
                     JUNGLE_TEMPLE_ID.equals(registryKey) ||
                             SIMPLE_DUNGEON_ID.equals(registryKey) ||
-                            MINESHAFT_ID.equals(registryKey)
+                            MINESHAFT_ID.equals(registryKey) ||
+                            RUINDED_PORTAL_ID.equals(registryKey)
             )) {
                 builder.modifyPools(pool -> {
                     pool.with(

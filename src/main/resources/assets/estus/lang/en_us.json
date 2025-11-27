@@ -10,5 +10,6 @@
   "info.estus.insufficient_shards": "§cNot enough Shards! §7(§7%1$s Required)",
   "item.estus.estus_flask_potency": "§6Estus Flask §7+%1$s",
   "info.estus.potency_upgrade": "§6Flask Potency Increased!",
-  "info.estus.potency_max_reached": "§cMaximum Flask Potency Reached!"
+  "info.estus.potency_max_reached": "§cMaximum Flask Potency Reached!",
+  "info.estus.undead_bone_shard": "§7Right Clicking a Campfire with this Item Increases your Flask's Potency"
 }
