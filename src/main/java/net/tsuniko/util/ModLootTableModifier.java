@@ -4,8 +4,13 @@ import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.LootTables;
+import net.minecraft.loot.condition.RandomChanceLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.function.SetCountLootFunction;
+import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
+import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.util.Identifier;
 import net.tsuniko.item.ModItems;
 
 public class ModLootTableModifier {
@@ -15,6 +20,7 @@ public class ModLootTableModifier {
     private static final RegistryKey<LootTable> SIMPLE_DUNGEON_ID = LootTables.SIMPLE_DUNGEON_CHEST;
     private static final RegistryKey<LootTable> MINESHAFT_ID = LootTables.ABANDONED_MINESHAFT_CHEST;
     private static final RegistryKey<LootTable> TRAIL_RUINS_COMMON_ID = LootTables.TRAIL_RUINS_COMMON_ARCHAEOLOGY;
+    private static final Identifier SKELETON_ID = Identifier.ofVanilla("entities/skeleton");
 
     public static void modifyLootTables() {
         LootTableEvents.MODIFY.register(((registryKey, builder, lootTableSource, wrapperLookup) -> {
@@ -38,6 +44,12 @@ public class ModLootTableModifier {
                             ItemEntry.builder(ModItems.ESTUS_SHARD)
                     );
                 });
+            } else if (SKELETON_ID.equals(registryKey.getValue())) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(RandomChanceLootCondition.builder(0.025f))
+                        .with(ItemEntry.builder(ModItems.UNDEAD_BONE_SHARD));
+                builder.pool(poolBuilder);
             }
         }));
     }

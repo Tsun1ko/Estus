@@ -22,6 +22,7 @@ public class ModItems {
 
     public static final Item ESTUS_SHARD = register(new EstusShardItem(new Item.Settings()), "estus_shard");
     public static final Item ESTUS_FLASK = register(new EstusFlaskItem(new Item.Settings().maxCount(1)), "estus_flask");
+    public static final Item UNDEAD_BONE_SHARD = register(new Item(new Item.Settings()), "undead_bone_shard");
 
     public static Item register(Item item, String id) {
         Identifier itemID = Identifier.of(Estus.MOD_ID, id);
@@ -35,6 +36,7 @@ public class ModItems {
         ItemGroupEvents.modifyEntriesEvent(CUSTOM_ITEM_GROUP_KEY).register(itemGroup -> {
             itemGroup.add(ModItems.ESTUS_SHARD);
             itemGroup.add(ModItems.ESTUS_FLASK);
+            itemGroup.add(ModItems.UNDEAD_BONE_SHARD);
         });
     }
 }
