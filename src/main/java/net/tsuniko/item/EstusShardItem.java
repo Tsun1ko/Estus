@@ -15,9 +15,8 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.world.World;
-import net.tsuniko.EstusClient;
 import net.tsuniko.attachment.ModAttachmentTypes;
-import net.tsuniko.attachment.ModCustomAttachedData;
+import net.tsuniko.attachment.ChargesAttachedData;
 
 import java.util.List;
 
@@ -69,8 +68,8 @@ public class EstusShardItem extends Item {
         if (itemStack.getCount() >= requiredShards) {
             itemStack.decrement(requiredShards);
 
-            player.setAttached(ModAttachmentTypes.MAX_ESTUS_CHARGES, new ModCustomAttachedData(maxCharges + 1));
-            player.setAttached(ModAttachmentTypes.ESTUS_CHARGES, new ModCustomAttachedData(maxCharges + 1));
+            player.setAttached(ModAttachmentTypes.MAX_ESTUS_CHARGES, new ChargesAttachedData(maxCharges + 1));
+            player.setAttached(ModAttachmentTypes.ESTUS_CHARGES, new ChargesAttachedData(maxCharges + 1));
             return true;
         } else {
             player.sendMessage(Text.translatable("info.estus.insufficient_shards", requiredShards));

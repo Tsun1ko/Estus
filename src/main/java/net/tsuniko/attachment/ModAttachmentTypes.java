@@ -7,23 +7,35 @@ import net.minecraft.util.Identifier;
 import net.tsuniko.Estus;
 
 public class ModAttachmentTypes {
-    public static final AttachmentType<ModCustomAttachedData> ESTUS_CHARGES = AttachmentRegistry.create(
+    public static final AttachmentType<ChargesAttachedData> ESTUS_CHARGES = AttachmentRegistry.create(
             Identifier.of(Estus.MOD_ID, "estus_charges"),
             builder->builder
-                    .initializer(()->ModCustomAttachedData.DEFAULT)
-                    .persistent(ModCustomAttachedData.CODEC)
+                    .initializer(()-> ChargesAttachedData.DEFAULT)
+                    .persistent(ChargesAttachedData.CODEC)
                     .syncWith(
-                            ModCustomAttachedData.PACKET_CODEC,
+                            ChargesAttachedData.PACKET_CODEC,
                             AttachmentSyncPredicate.targetOnly()
                     )
     );
-    public static final AttachmentType<ModCustomAttachedData> MAX_ESTUS_CHARGES = AttachmentRegistry.create(
+
+    public static final AttachmentType<ChargesAttachedData> MAX_ESTUS_CHARGES = AttachmentRegistry.create(
             Identifier.of(Estus.MOD_ID, "max_estus_charges"),
             builder->builder
-                    .initializer(()->ModCustomAttachedData.DEFAULT)
-                    .persistent(ModCustomAttachedData.CODEC)
+                    .initializer(()-> ChargesAttachedData.DEFAULT)
+                    .persistent(ChargesAttachedData.CODEC)
                     .syncWith(
-                            ModCustomAttachedData.PACKET_CODEC,
+                            ChargesAttachedData.PACKET_CODEC,
+                            AttachmentSyncPredicate.targetOnly()
+                    )
+    );
+
+    public static final AttachmentType<PotencyAttachedData> FLASK_POTENCY = AttachmentRegistry.create(
+            Identifier.of(Estus.MOD_ID, "flask_potency"),
+            builder->builder
+                    .initializer(()-> PotencyAttachedData.DEFAULT)
+                    .persistent(PotencyAttachedData.CODEC)
+                    .syncWith(
+                            PotencyAttachedData.PACKET_CODEC,
                             AttachmentSyncPredicate.targetOnly()
                     )
     );

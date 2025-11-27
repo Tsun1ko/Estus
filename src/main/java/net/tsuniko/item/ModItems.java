@@ -22,7 +22,7 @@ public class ModItems {
 
     public static final Item ESTUS_SHARD = register(new EstusShardItem(new Item.Settings()), "estus_shard");
     public static final Item ESTUS_FLASK = register(new EstusFlaskItem(new Item.Settings().maxCount(1)), "estus_flask");
-    public static final Item UNDEAD_BONE_SHARD = register(new Item(new Item.Settings()), "undead_bone_shard");
+    public static final Item UNDEAD_BONE_SHARD = register(new UndeadBoneShardItem(new Item.Settings()), "undead_bone_shard");
 
     public static Item register(Item item, String id) {
         Identifier itemID = Identifier.of(Estus.MOD_ID, id);

@@ -47,7 +47,7 @@ public class ModLootTableModifier {
             } else if (SKELETON_ID.equals(registryKey.getValue())) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
-                        .conditionally(RandomChanceLootCondition.builder(0.025f))
+                        .conditionally(RandomChanceLootCondition.builder(0.01f))
                         .with(ItemEntry.builder(ModItems.UNDEAD_BONE_SHARD));
                 builder.pool(poolBuilder);
             }
