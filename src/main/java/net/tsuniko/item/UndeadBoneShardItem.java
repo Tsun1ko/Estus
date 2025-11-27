@@ -49,7 +49,7 @@ public class UndeadBoneShardItem extends Item {
                 }
                 return ActionResult.SUCCESS;
             } else {
-                context.getPlayer().sendMessage(Text.translatable("info.estus.potency_max_reached"));
+                if (world.isClient()) context.getPlayer().sendMessage(Text.translatable("info.estus.potency_max_reached"));
                 return ActionResult.PASS;
             }
         }

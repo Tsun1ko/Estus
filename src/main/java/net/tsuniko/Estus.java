@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.entity.event.v1.EntitySleepEvents;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.Text;
+import net.tsuniko.attachment.ChargesAttachedData;
 import net.tsuniko.attachment.ModAttachmentTypes;
 import net.tsuniko.item.ModItems;
 import net.tsuniko.util.ModLootTableModifier;
@@ -38,7 +39,7 @@ public class Estus implements ModInitializer {
 
     private void refill(PlayerEntity user) {
         if (user == null) user = EstusClient.getPlayer();
-        user.setAttached(ModAttachmentTypes.ESTUS_CHARGES, user.getAttachedOrCreate(ModAttachmentTypes.MAX_ESTUS_CHARGES));
+        user.setAttached(ModAttachmentTypes.ESTUS_CHARGES, new ChargesAttachedData(user.getAttachedOrCreate(ModAttachmentTypes.MAX_ESTUS_CHARGES).charges()));
 
         user.sendMessage(Text.translatable("info.estus.flasks_replenished"));
     }

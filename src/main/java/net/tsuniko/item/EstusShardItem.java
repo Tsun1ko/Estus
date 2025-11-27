@@ -69,6 +69,11 @@ public class EstusShardItem extends Item {
         int maxCharges = player.getAttachedOrCreate(ModAttachmentTypes.MAX_ESTUS_CHARGES).charges();
         int requiredShards = Math.toIntExact(Math.round(Math.pow(maxCharges - 2, 1.5)));
 
+        if (maxCharges >= 15) {
+            if (world.isClient()) player.sendMessage(Text.translatable("info.estus.max_charges"));
+            return false;
+        }
+
         if (itemStack.getCount() >= requiredShards) {
 
             itemStack.decrement(requiredShards);
@@ -78,7 +83,7 @@ public class EstusShardItem extends Item {
 
             return true;
         } else {
-            player.sendMessage(Text.translatable("info.estus.insufficient_shards", requiredShards));
+            if (world.isClient()) player.sendMessage(Text.translatable("info.estus.insufficient_shards", requiredShards));
             return false;
         }
 

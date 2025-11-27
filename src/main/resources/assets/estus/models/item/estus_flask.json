@@ -12,9 +12,57 @@
     },
     {
       "predicate": {
+        "estus:charges": 0.1
+      },
+      "model": "estus:item/estus_flask_10"
+    },
+    {
+      "predicate": {
+        "estus:charges": 0.2
+      },
+      "model": "estus:item/estus_flask_20"
+    },
+    {
+      "predicate": {
+        "estus:charges": 0.3
+      },
+      "model": "estus:item/estus_flask_30"
+    },
+    {
+      "predicate": {
+        "estus:charges": 0.4
+      },
+      "model": "estus:item/estus_flask_40"
+    },
+    {
+      "predicate": {
         "estus:charges": 0.5
       },
-      "model": "estus:item/half_full_estus_flask"
+      "model": "estus:item/estus_flask_50"
+    },
+    {
+      "predicate": {
+        "estus:charges": 0.6
+      },
+      "model": "estus:item/estus_flask_60"
+    },
+    {
+      "predicate": {
+        "estus:charges": 0.7
+      },
+      "model": "estus:item/estus_flask_70"
+    },
+    {
+      "predicate": {
+        "estus:charges": 0.8
+      },
+      "model": "estus:item/estus_flask_80"
+    },
+    {
+      "predicate": {
+        "estus:charges": 0.9
+      },
+      "model": "estus:item/estus_flask_90"
     },
     {
       "predicate": {

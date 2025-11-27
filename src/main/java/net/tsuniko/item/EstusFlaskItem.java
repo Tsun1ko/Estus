@@ -87,7 +87,8 @@ public class EstusFlaskItem extends Item {
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if (entity instanceof PlayerEntity player) {
+        if (entity instanceof PlayerEntity) {
+            PlayerEntity player = (PlayerEntity) entity;
             int potency = player.getAttachedOrCreate(ModAttachmentTypes.FLASK_POTENCY).potency();
             if (potency > 0) stack.set(DataComponentTypes.CUSTOM_NAME, Text.translatable("item.estus.estus_flask_potency", Text.literal("§7" + potency)));
         }

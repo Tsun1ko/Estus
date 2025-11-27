@@ -12,6 +12,7 @@ public class ModAttachmentTypes {
             builder->builder
                     .initializer(()-> ChargesAttachedData.DEFAULT)
                     .persistent(ChargesAttachedData.CODEC)
+                    .copyOnDeath()
                     .syncWith(
                             ChargesAttachedData.PACKET_CODEC,
                             AttachmentSyncPredicate.targetOnly()
@@ -23,6 +24,7 @@ public class ModAttachmentTypes {
             builder->builder
                     .initializer(()-> ChargesAttachedData.DEFAULT)
                     .persistent(ChargesAttachedData.CODEC)
+                    .copyOnDeath()
                     .syncWith(
                             ChargesAttachedData.PACKET_CODEC,
                             AttachmentSyncPredicate.targetOnly()
@@ -34,6 +36,7 @@ public class ModAttachmentTypes {
             builder->builder
                     .initializer(()-> PotencyAttachedData.DEFAULT)
                     .persistent(PotencyAttachedData.CODEC)
+                    .copyOnDeath()
                     .syncWith(
                             PotencyAttachedData.PACKET_CODEC,
                             AttachmentSyncPredicate.targetOnly()

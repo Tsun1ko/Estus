@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "estus:item/half_full_estus_flask"
+    "layer0": "estus:item/estus_flask_50"
   }
 }
