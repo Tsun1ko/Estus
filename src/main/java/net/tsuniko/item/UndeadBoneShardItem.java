@@ -27,33 +27,45 @@ public class UndeadBoneShardItem extends Item {
         Block target = world.getBlockState(context.getBlockPos()).getBlock();
 
         if (target instanceof CampfireBlock) {
-            increasePotency(context.getPlayer().getStackInHand(context.getHand()), context.getPlayer());
+            boolean result = increasePotency(context.getPlayer().getStackInHand(context.getHand()), context.getPlayer());
 
-            if (world.isClient()) context.getPlayer().sendMessage(Text.translatable("info.estus.potency_upgrade"));
+            if (result) {
+                if (world.isClient()) context.getPlayer().sendMessage(Text.translatable("info.estus.potency_upgrade"));
 
-            if (!world.isClient()) {
-                ServerWorld serverWorld = (ServerWorld) context.getWorld();
+                if (!world.isClient()) {
+                    ServerWorld serverWorld = (ServerWorld) context.getWorld();
 
-                serverWorld.spawnParticles(ParticleTypes.FLAME,
-                        context.getBlockPos().getX() + 0.5,
-                        context.getBlockPos().getY() + 1,
-                        context.getBlockPos().getZ() + 0.5,
-                        15,0,0,0,1);
+                    serverWorld.spawnParticles(ParticleTypes.FLAME,
+                            context.getBlockPos().getX() + 0.5,
+                            context.getBlockPos().getY() + 1,
+                            context.getBlockPos().getZ() + 0.5,
+                            15,0,0,0,1);
 
-                serverWorld.playSound(null, context.getBlockPos(),
-                        SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.BLOCKS, 1f, 1f);
+                    serverWorld.playSound(null, context.getBlockPos(),
+                            SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.BLOCKS, 1f, 1f);
+                }
+                return ActionResult.SUCCESS;
+            } else {
+                context.getPlayer().sendMessage(Text.translatable("info.estus.potency_max_reached"));
+                return ActionResult.PASS;
             }
 
-            return ActionResult.SUCCESS;
+
+
+
         }
         return ActionResult.PASS;
     }
 
-    private void increasePotency(ItemStack itemStack, PlayerEntity player) {
+    private boolean increasePotency(ItemStack itemStack, PlayerEntity player) {
+        if (player.getAttachedOrCreate(ModAttachmentTypes.FLASK_POTENCY).potency() >= 5) return false;
+
         itemStack.decrement(1);
 
         int potency = player.getAttachedOrCreate(ModAttachmentTypes.FLASK_POTENCY).potency();
 
         player.setAttached(ModAttachmentTypes.FLASK_POTENCY, new PotencyAttachedData(potency + 1));
+
+        return true;
     }
 }

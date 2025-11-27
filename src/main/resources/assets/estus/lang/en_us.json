@@ -9,5 +9,6 @@
   "info.estus.estus_shard": "§7Estus Flask Charges can be increased by Right Clicking an Anvil with this Item",
   "info.estus.insufficient_shards": "§cNot enough Shards! §7(§7%1$s Required)",
   "item.estus.estus_flask_potency": "§6Estus Flask §7+%1$s",
-  "info.estus.potency_upgrade": "§6Flask Potency Increased!"
+  "info.estus.potency_upgrade": "§6Flask Potency Increased!",
+  "info.estus.potency_max_reached": "§cMaximum Flask Potency Reached!"
 }
