@@ -7,8 +7,8 @@ import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.Text;
 import net.tsuniko.attachment.ModAttachmentTypes;
-import net.tsuniko.block.ModBlocks;
 import net.tsuniko.item.ModItems;
+import net.tsuniko.util.ModLootTableModifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,8 +23,9 @@ public class Estus implements ModInitializer {
 	@Override
 	public void onInitialize() {
         ModItems.initialize();
-        ModBlocks.initialize();
         ModAttachmentTypes.inititalize();
+
+        ModLootTableModifier.modifyLootTables();
 
         ServerPlayerEvents.AFTER_RESPAWN.register((oldPlayer, newPlayer, alive) -> {
             refill(newPlayer);

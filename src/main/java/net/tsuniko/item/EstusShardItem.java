@@ -31,9 +31,8 @@ public class EstusShardItem extends Item {
         World world = context.getWorld();
         Block target = world.getBlockState(context.getBlockPos()).getBlock();
 
-
         if (target instanceof AnvilBlock) {
-            if (addCharges(context.getPlayer().getStackInHand(context.getHand()), context.getPlayer())) {
+            if (addCharges(context.getPlayer().getStackInHand(context.getHand()), context.getPlayer(), world)) {
                 if (world.isClient()) context.getPlayer().sendMessage(Text.translatable("info.estus.upgrade"));
 
                 if (!world.isClient()) {
@@ -51,21 +50,33 @@ public class EstusShardItem extends Item {
 
                 return ActionResult.SUCCESS;
             } else {
-                if (world.isClient()) context.getPlayer().sendMessage(Text.translatable("info.estus.upgrade_failed"));
+
                 return ActionResult.PASS;
             }
         }
         return ActionResult.PASS;
     }
 
-    private boolean addCharges(ItemStack itemStack, PlayerEntity player) {
-        if (itemStack == null || player == null) return false;
-        itemStack.decrement(1);
-        int maxCharges = player.getAttachedOrCreate(ModAttachmentTypes.MAX_ESTUS_CHARGES).charges();
+    private boolean addCharges(ItemStack itemStack, PlayerEntity player, World world) {
+        if (itemStack == null || player == null) {
+            if (world.isClient() && player != null) player.sendMessage(Text.translatable("info.estus.upgrade_failed"));
+            return false;
+        }
 
-        player.setAttached(ModAttachmentTypes.MAX_ESTUS_CHARGES, new ModCustomAttachedData(maxCharges + 1));
-        player.setAttached(ModAttachmentTypes.ESTUS_CHARGES, new ModCustomAttachedData(maxCharges + 1));
-        return true;
+        int maxCharges = player.getAttachedOrCreate(ModAttachmentTypes.MAX_ESTUS_CHARGES).charges();
+        int requiredShards = Math.toIntExact(Math.round(Math.pow(maxCharges - 2, 1.5)));
+
+        if (itemStack.getCount() >= requiredShards) {
+            itemStack.decrement(requiredShards);
+
+            player.setAttached(ModAttachmentTypes.MAX_ESTUS_CHARGES, new ModCustomAttachedData(maxCharges + 1));
+            player.setAttached(ModAttachmentTypes.ESTUS_CHARGES, new ModCustomAttachedData(maxCharges + 1));
+            return true;
+        } else {
+            player.sendMessage(Text.translatable("info.estus.insufficient_shards", requiredShards));
+            return false;
+        }
+
     }
 
     @Override

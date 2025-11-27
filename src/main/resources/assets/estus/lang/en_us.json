@@ -3,7 +3,8 @@
   "item.estus.estus_flask": "§6Estus Flask",
   "itemGroup.estus": "Estus",
   "info.estus.upgrade": "§6Flask Charge added!",
-  "info.estus.upgrade_failed": "§3Upgrade Failed",
+  "info.estus.upgrade_failed": "§cUpgrade Failed",
   "info.estus.flasks_replenished": "§6Flasks Replenished!",
-  "info.estus.estus_shard": "§7Estus Flask Charges can be increased by Right Clicking an Anvil with this Item"
+  "info.estus.estus_shard": "§7Estus Flask Charges can be increased by Right Clicking an Anvil with this Item",
+  "info.estus.insufficient_shards": "§cNot enough Shards! §7(§7%1$s Required)"
 }
