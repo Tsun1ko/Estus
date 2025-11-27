@@ -1,0 +1,21 @@
+{
+  "display": {
+    "icon": {
+      "id": "estus:estus_flask"
+    },
+    "title": "You're no Hollow, eh?",
+    "description": "Craft an Estus Flask",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "estus:estus_flask"
+      }
+    }
+  }
+}

@@ -1,5 +1,9 @@
 package net.tsuniko.item;
 
+import net.minecraft.advancement.Advancement;
+import net.minecraft.advancement.AdvancementManager;
+import net.minecraft.advancement.AdvancementRequirements;
+import net.minecraft.advancement.AdvancementRewards;
 import net.minecraft.block.AnvilBlock;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
@@ -66,10 +70,12 @@ public class EstusShardItem extends Item {
         int requiredShards = Math.toIntExact(Math.round(Math.pow(maxCharges - 2, 1.5)));
 
         if (itemStack.getCount() >= requiredShards) {
+
             itemStack.decrement(requiredShards);
 
             player.setAttached(ModAttachmentTypes.MAX_ESTUS_CHARGES, new ChargesAttachedData(maxCharges + 1));
             player.setAttached(ModAttachmentTypes.ESTUS_CHARGES, new ChargesAttachedData(maxCharges + 1));
+
             return true;
         } else {
             player.sendMessage(Text.translatable("info.estus.insufficient_shards", requiredShards));
